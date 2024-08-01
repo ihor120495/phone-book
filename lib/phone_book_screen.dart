@@ -14,6 +14,8 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController birthdayController = TextEditingController();
 
   void _showAddContactDialog() {
     showDialog(
@@ -33,7 +35,20 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
                 decoration: const InputDecoration(labelText: 'Phone Number'),
                 keyboardType: TextInputType.phone,
               ),
-            ],
+
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(labelText: 'email'),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              TextField(
+                controller: birthdayController,
+                decoration: const InputDecoration(labelText: 'birthday'),
+                keyboardType: TextInputType.datetime,
+              ),
+
+
+  ],
           ),
           actions: [
             TextButton(
@@ -46,9 +61,15 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
                   contacts.add(ContactModel(
                     name: nameController.text,
                     phone: phoneController.text,
+                     email: emailController.text.isNotEmpty ? emailController.text : null,
+                     birthday: birthdayController.text.isNotEmpty ? birthdayController.text: null,
                   ));
                   nameController.clear();
                   phoneController.clear();
+                  emailController.clear();
+                  birthdayController.clear();
+
+
                 });
                 Navigator.of(context).pop();
               },
@@ -79,6 +100,8 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
           return ItemComponent(
             phone: contact.phone,
             name: contact.name,
+            email: contact.email,
+            birthday: contact.birthday,
             onPressed: () => _deleteContact(index),
           );
         },
@@ -90,3 +113,4 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
     );
   }
 }
+
