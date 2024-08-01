@@ -21,12 +21,11 @@ class ItemComponent extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.orange,
-        borderRadius:BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10),
       ),
-
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 10),
-      padding: EdgeInsets.symmetric(vertical: 2,horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
       child: Row(
         children: [
           Flexible(
@@ -36,47 +35,17 @@ class ItemComponent extends StatelessWidget {
               children: [
                 Text(name),
                 Text(phone),
-                if(email !=null) Text(email!),
-                birthday !=null ? Text(birthday!) :Icon(Icons.abc) ,
-
-            
+                if (email != null) Text(email!),
+                birthday != null ? Text(birthday!) : const Icon(Icons.abc),
               ],
-            
             ),
-
           ),
-          IconButton(onPressed: onPressed, icon:Icon(Icons.delete) )
-
+          IconButton(
+            onPressed: onPressed,
+            icon: const Icon(Icons.delete),
+          )
         ],
-
-
       ),
-
-
-
-
     );
-
-
-
-
-
-
-    // return ListTile(
-    //   isThreeLine: true,
-    //   title: Text(name),
-    //   subtitle: Text('$phone, $birthday'),
-    //
-    //   leading: Text(email!),
-    //
-    //   trailing: IconButton(
-    //     icon: const Icon(Icons.delete),
-    //     onPressed: onPressed,
-    //   ),
-
-
-
-
-    // );
   }
 }
