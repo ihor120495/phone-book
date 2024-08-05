@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phone_book/phone_book_screen.dart';
+import 'package:phone_book/pages/phone_book_screen.dart';
 
 void main() {
   runApp(const MyApp());

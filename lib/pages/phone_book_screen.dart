@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:phone_book/contact_model.dart';
-import 'package:phone_book/item_component.dart';
+import 'package:phone_book/model/contact_model.dart';
+import 'package:phone_book/components/item_component.dart';
+import 'package:phone_book/pages/edit_contact_screen.dart';
 
 class PhoneBookScreen extends StatefulWidget {
   const PhoneBookScreen({super.key});
@@ -103,6 +104,7 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
             email: contact.email,
             birthday: contact.birthday,
             onPressed: () => _deleteContact(index),
+            onTap:() =>_editContact(index) ,
           );
         },
       ),
@@ -112,5 +114,22 @@ class _PhoneBookScreenState extends State<PhoneBookScreen> {
       ),
     );
   }
+
+ void _editContact(int index)  async {
+    final editedContact = await Navigator.push(
+      context, MaterialPageRoute(
+      builder: (context) => EditContactScreen(
+      contact : contacts[index]
+
+    ),
+    ),
+    );
+    if (editedContact != null){
+      setState(() {
+        contacts[index] = editedContact;
+
+      });
+    }
+ }
 }
 

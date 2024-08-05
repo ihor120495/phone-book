@@ -6,6 +6,7 @@ class ItemComponent extends StatelessWidget {
   final String? email;
   final String? birthday;
   final Function()? onPressed;
+  final Function () onTap;
 
   const ItemComponent({
     super.key,
@@ -13,12 +14,13 @@ class ItemComponent extends StatelessWidget {
     required this.name,
     this.email,
     this.birthday,
-    this.onPressed,
+    this.onPressed, required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+
       decoration: BoxDecoration(
         color: Colors.orange,
         borderRadius: BorderRadius.circular(10),
@@ -26,9 +28,11 @@ class ItemComponent extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
+
       child: Row(
         children: [
           Flexible(
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
